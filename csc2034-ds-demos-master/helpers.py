@@ -279,7 +279,7 @@ def downsample(X,CL):
 
     if currentRatio < 1:
         majority = 1
-        threshold = 1- currentRatio
+        threshold = 1 - currentRatio
     else:
         majority = 0
         threshold = 1 - 1/ currentRatio
@@ -288,7 +288,7 @@ def downsample(X,CL):
     X_reb = np.arange(0).reshape(0, X.shape[1])
     CL_reb = np.arange(0)
     for i in range(len(CL)):
-        if CL[i] == majority and randn() <= threshold:
+        if CL[i] == majority and random.random() <= threshold:
             ## removing record
             n +=1
         else:
@@ -299,6 +299,4 @@ def downsample(X,CL):
     print("%d majority class records removed "% n)
     print("new class labels ratio: %0.2f" % (Counter(CL_reb)[0] / Counter(CL_reb)[1]))
     print("counts: ",Counter(CL_reb))
-    
-    return X_reb, CL_reb
     
